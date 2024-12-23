@@ -1,4 +1,4 @@
-Definition of Map Data Structure -: 
+1-: Definition of Map Data Structure -: 
 
 A map is a data structure used to store elements in the form of key-value pairs. Each key in the map is unique,
 while values can be duplicate. In C++, maps are part of the STL (Standard Template Library),
@@ -59,5 +59,39 @@ map.size() gives the number of elements in the map.
 
 
 
+
+
+2-: Definition of Set Data Structure -: 
+A set is a container that stores unique, sorted elements. The sorting is based on the 
+container's comparison function (default is ascending order using std::less).
+
+In C++, a set is a Standard Template Library (STL) container that stores unique elements 
+in a specific order. It automatically arranges elements in ascending order (by default) and
+does not allow duplicates. Internally, it uses a balanced binary search tree (like a Red-Black Tree) 
+to maintain order and ensure logarithmic time complexity for insert, erase, and search operations.
+
+Key Characteristics -: 
+
+No duplicates: Each value in a set is unique.
+Ordered: Elements are stored in a sorted order.
+Logarithmic Time Complexity: Operations like insertion, deletion, 
+and lookup are performed in O(logn) time.
+
+Underlying Structure -: 
+The set uses a self-balancing binary search tree 
+(typically a Red-Black Tree) for efficient operations.
+
+Header File -: 
+To use set, include the header file:
+
+#include <set>
+
+Common Methods -: 
+
+insert(): Adds an element.
+erase(): Removes an element.
+find(): Searches for an element.
+size(): Returns the number of elements.
+begin() and end(): Iterators to traverse the set.
 
 
