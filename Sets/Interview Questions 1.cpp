@@ -346,9 +346,74 @@ Longest consecutive sequence length: 4
 
 
 
-
-
-
-
+8-: Sliding Window with Set Data Structure -: 
   
+Problem Statement:
+Given an array of integers arr[] of size n, find the length of the longest subarray 
+that contains only distinct elements. Use the sliding window algorithm and the
+set data structure to solve the problem efficiently.
+
+Input:
+An integer array arr[] of size n.
+
+Output:
+An integer representing the length of the longest subarray with distinct elements.
+
+Example 1:
+Input: arr[] = {1, 2, 1, 3, 4, 2, 5}
+Output: 4
+
+Explanation:
+The longest subarray with distinct elements is {1, 3, 4, 2} or {3, 4, 2, 5}.
+
+
+
+Solution Approach -: 
+Use the sliding window technique with a set to track the distinct 
+elements in the current subarray. Expand the window by adding elements 
+to the set, and shrink it from the left when duplicates are found.
+
+Algorithm -: 
+Use two pointers (start/i and end/j) to define a sliding window.
+Use a set to keep track of the distinct elements in the current window.
+Initialize maxLength to 0.
+Traverse the array using the end pointer:
+If arr[end] is not in the set:
+Add arr[end] to the set.
+Update the window size and maxLength.
+If arr[end] is already in the set:
+Shrink the window by moving start forward until arr[end] can be added to the set.
+Return maxLength.
+
+
+#include <iostream>
+#include <unordered_set>
+#include <vector>
+using namespace std;
+
+int longestDistinctSubarray(int arr[], int n){
+    unordered_set<int>window; // To store distinct elements in the window
+    int i=0;
+    int maxLength=0;
+  
+    for(int j=0; j<n; j++){
+        // Shrink the window if a duplicate is found
+        while(window.find(arr[j]) != window.end()){ // means ele. is already present 
+            window.erase(arr[i]);
+            i++;
+        }
+        // Add the current element to the set
+        window.insert(arr[j]);
+        // Update the maximum length
+        maxLength =max(maxLength, j-i+1);
+    }
+    return maxLength;
+}
+
+int main() {
+    int arr[]={1, 2, 1, 3, 4, 2, 5};
+    int n=sizeof(arr)/sizeof(arr[0]);
+    cout<<"Length of longest distinct subarray: "<<longestDistinctSubarray(arr, n)<<endl;
+}
+
 
